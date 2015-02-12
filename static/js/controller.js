@@ -1,3 +1,4 @@
+// controller settings
 var moves = {
 	37: 'left',
 	38: 'up',
@@ -5,12 +6,15 @@ var moves = {
 	40: 'down'
 };
 
+// multi keys down stored array
 var keys = [];
 
+// keys listeners
 document.addEventListener("keydown",keyDownHandler, false);
 
 document.addEventListener("keyup",keyUpHandler, false);
 
+// keys handlers
 function keyDownHandler(event) {
 	if(moves[event.keyCode]) {
 		setKey(event.keyCode);
@@ -25,6 +29,7 @@ function keyUpHandler(event) {
 	}
 }
 
+// misc functions
 function setKey(key) {
 	var add = true;
 	for (k in keys) {

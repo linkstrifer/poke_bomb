@@ -106,6 +106,7 @@ function animate() {
 	character_1.position.x += (character_1_behavior.changeX * global.speed);
 	character_1.position.y += (character_1_behavior.changeY * global.speed);
 
+	// add to fix multiple keys pressed bug
 	mapKeys();
 
 	renderer.render(stage);

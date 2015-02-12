@@ -1,0 +1,84 @@
+{"frames": {
+
+"bulbasaur-down-0.png":
+{
+	"frame": {"x":2,"y":2,"w":45,"h":48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":45,"h":48},
+	"sourceSize": {"w":45,"h":48},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"bulbasaur-down-1.png":
+{
+	"frame": {"x":49,"y":2,"w":45,"h":48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":45,"h":48},
+	"sourceSize": {"w":45,"h":48},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"bulbasaur-left-0.png":
+{
+	"frame": {"x":96,"y":2,"w":57,"h":45},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":45},
+	"sourceSize": {"w":57,"h":45},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"bulbasaur-left-1.png":
+{
+	"frame": {"x":155,"y":2,"w":57,"h":45},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":45},
+	"sourceSize": {"w":57,"h":45},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"bulbasaur-right-0.png":
+{
+	"frame": {"x":214,"y":2,"w":57,"h":45},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":45},
+	"sourceSize": {"w":57,"h":45},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"bulbasaur-right-1.png":
+{
+	"frame": {"x":273,"y":2,"w":57,"h":45},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":45},
+	"sourceSize": {"w":57,"h":45},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"bulbasaur-up-0.png":
+{
+	"frame": {"x":332,"y":2,"w":39,"h":45},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":39,"h":45},
+	"sourceSize": {"w":39,"h":45},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"bulbasaur-up-1.png":
+{
+	"frame": {"x":373,"y":2,"w":39,"h":45},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":39,"h":45},
+	"sourceSize": {"w":39,"h":45},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "pokemons.png",
+	"format": "RGBA8888",
+	"size": {"w":414,"h":52},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c0a74a1aaf5f18daeca7b47ba74754a8:642949888adb32257530c0164255bee6:46c22ca313450a7c238cae1bf5ea1171$"
+}
+}

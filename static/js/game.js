@@ -1,7 +1,17 @@
 var stage = new PIXI.Stage(0xF012BE);
 
+var global = {
+	'speed': 1.5
+};
+
 var character_1;
 var character_1_texture;
+var character_1_behavior = {
+	'isMoving': false,
+	'changeX': 0,
+	'changeY': 0,
+	'speed': 1
+};
 
 var renderer = PIXI.autoDetectRenderer(400, 400);
 
@@ -26,6 +36,9 @@ loader.onComplete = function() {
 	character_1.play();
 
 	stage.addChild(character_1);
+
+	//init the stage
+	requestAnimFrame(animate);
 }
 
 loader.load();
@@ -52,18 +65,40 @@ function map(name) {
 }
 
 function move(side) {
+	// delete current textures
 	character_1.textures = [];
+	
+	// add new ones
 	for (texture in character_1_texture[side]) {
 		character_1.textures.push(character_1_texture[side][texture]);
 	}
+
+	//move horizontal
+	if(side == 'right') {
+		character_1_behavior.changeX = 1;
+	} else if(side == 'left') {
+		character_1_behavior.changeX = -1;
+	} else {
+		character_1_behavior.changeX = 0;
+	}
+
+	//move vertical
+	if(side == 'down') {
+		character_1_behavior.changeY = 1;
+	} else if(side == 'up') {
+		character_1_behavior.changeY = -1;
+	} else {
+		character_1_behavior.changeY = 0;
+	}
+	
 	character_1.play();
 }
 
-//refresh the stage
-requestAnimFrame(animate);
-
 function animate() {
 	requestAnimFrame(animate);
+
+	character_1.position.x += (character_1_behavior.changeX * global.speed);
+	character_1.position.y += (character_1_behavior.changeY * global.speed);
 
 	renderer.render(stage);
 }

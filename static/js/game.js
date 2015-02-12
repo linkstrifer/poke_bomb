@@ -94,11 +94,19 @@ function move(side) {
 	character_1.play();
 }
 
+function stop() {
+	character_1.stop();
+	character_1_behavior.changeX = 0;
+	character_1_behavior.changeY = 0;
+}
+
 function animate() {
 	requestAnimFrame(animate);
 
 	character_1.position.x += (character_1_behavior.changeX * global.speed);
 	character_1.position.y += (character_1_behavior.changeY * global.speed);
+
+	mapKeys();
 
 	renderer.render(stage);
 }

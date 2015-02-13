@@ -1,57 +1,63 @@
-// controller settings
-var moves = {
-	37: 'left',
-	38: 'up',
-	39: 'right',
-	40: 'down'
-};
-
-// multi keys down stored array
 var keys = [];
+var moves = [
+	{
+		37: 'left',
+		38: 'up',
+		39: 'right',
+		40: 'down'
+	},
+	{
+		65: 'left',
+		87: 'up',
+		68: 'right',
+		83: 'down'
+	}
+];
 
-// keys listeners
 document.addEventListener("keydown",keyDownHandler, false);
-
 document.addEventListener("keyup",keyUpHandler, false);
 
-// keys handlers
 function keyDownHandler(event) {
-	if(moves[event.keyCode]) {
-		setKey(event.keyCode);
-		move(moves[event.keyCode]);
+	for(player in moves) {
+		if(moves[player][event.keyCode]) {
+			setKey(player, event.keyCode);
+			characters[player].move(moves[player][event.keyCode]);
+		}
 	}
 }
-
 function keyUpHandler(event) {
-	if(moves[event.keyCode]) {
-		removeKey(event.keyCode);
-		stop();
+	for(player in moves) {
+		if(moves[player][event.keyCode]) {
+			removeKey(player, event.keyCode);
+			characters[player].stop();
+		}
 	}
 }
-
-// misc functions
-function setKey(key) {
+function setKey(player, key) {
 	var add = true;
-	for (k in keys) {
-		if(keys[k] == key) {
+	for (k in keys[player]) {
+		if(keys[player][k] == key) {
 			add = false;
 		}
 	}
 	if(add) {
-		keys.push(key);
+		if(!keys[player]) {
+			keys[player] = [];
+		}
+		keys[player].push(key);
 	}
 }
-
-function removeKey(key) {
-	for (k in keys) {
-		if(keys[k] == key) {
-			keys.splice(k, 1);
+function removeKey(player, key) {
+	for (k in keys[player]) {
+		if(keys[player][k] == key) {
+			keys[player].splice(k, 1);
 		}
 	}
 }
-
 function mapKeys() {
-	if(keys[0] && keys.length == 1) {
-		move(moves[keys[0]]);
+	for(player in keys) {
+		if(keys[player].length == 1) {
+			characters[player].move(moves[player][keys[player][0]]);
+		}
 	}
 }

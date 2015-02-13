@@ -1,3 +1,13 @@
+var B = SAT.Box;
+var V = SAT.Vector;
+
+var box1 = new B(new V(0,0), 20, 20).toPolygon();
+var box2 = new B(new V(-21,0), 20, 20).toPolygon();
+var collided = SAT.testPolygonPolygon(box1, box2);
+console.log(collided)
+
+
+
 function checkCollision(obj) {
 	var sprite = obj.sprite;
 	var temp_object = {

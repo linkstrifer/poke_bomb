@@ -53,19 +53,18 @@ function CharacterMove(side) {
 	}
 
 	//move horizontal
-
-	if(side == 'right' && !checkCollision(this)) {
+	if(side == 'right') {
 		this.behavior.changeX = 1;
-	} else if(side == 'left'&& !checkCollision(this)) {
+	} else if(side == 'left') {
 		this.behavior.changeX = -1;
 	} else {
 		this.behavior.changeX = 0;
 	}
 
 	//move vertical
-	if(side == 'down' && !checkCollision(this)) {
+	if(side == 'down') {
 		this.behavior.changeY = 1;
-	} else if(side == 'up' && !checkCollision(this)) {
+	} else if(side == 'up') {
 		this.behavior.changeY = -1;
 	} else {
 		this.behavior.changeY = 0;

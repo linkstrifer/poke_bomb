@@ -16,7 +16,7 @@ assets_list = ['static/sprites/pokemons.json'];
 // create assets loader
 loader = new PIXI.AssetLoader(assets_list);
 // create characters
-for(var i = 0; i < 2; i++) {
+for(var i = 0; i < 10; i++) {
 	characters.push(Object.create(Character.prototype));
 }
 // load assets
@@ -35,7 +35,7 @@ loader.onComplete = function() {
 
 function animate() {
 	requestAnimFrame(animate);
-	
+
 	for(character in characters) {
 		characters[character].sprite.position.x += (characters[character].behavior.changeX * global.speed);
 		characters[character].sprite.position.y += (characters[character].behavior.changeY * global.speed);

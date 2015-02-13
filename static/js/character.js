@@ -28,8 +28,8 @@ function CharacterInit(name) {
 	this.textures = map(name);
 
 	this.sprite = new PIXI.MovieClip(this.textures.down);
-	this.sprite.position.x = 200 * Math.random();
-	this.sprite.position.y = 200 * Math.random();
+	this.sprite.position.x = 500 * Math.random();
+	this.sprite.position.y = 500 * Math.random();
 	this.sprite.anchor.x = 0.5;
 	this.sprite.anchor.y = 0.5;
 	this.sprite.animationSpeed = 0.07;
@@ -53,18 +53,19 @@ function CharacterMove(side) {
 	}
 
 	//move horizontal
-	if(side == 'right') {
+
+	if(side == 'right' && !checkCollision(this)) {
 		this.behavior.changeX = 1;
-	} else if(side == 'left') {
+	} else if(side == 'left'&& !checkCollision(this)) {
 		this.behavior.changeX = -1;
 	} else {
 		this.behavior.changeX = 0;
 	}
 
 	//move vertical
-	if(side == 'down') {
+	if(side == 'down' && !checkCollision(this)) {
 		this.behavior.changeY = 1;
-	} else if(side == 'up') {
+	} else if(side == 'up' && !checkCollision(this)) {
 		this.behavior.changeY = -1;
 	} else {
 		this.behavior.changeY = 0;

@@ -36,46 +36,70 @@ function CharacterInit(name) {
 
 	this.behavior = {
 		'isMoving': false,
-		'changeX': 0,
-		'changeY': 0,
+		'change': {
+			'x': 0,
+			'y': 0
+		},
 		'speed': 1
 	};
+
+	this.config = {
+		'left': {
+			'axis': 'x',
+			'value': '-1'
+		},
+		'right': {
+			'axis': 'x',
+			'value': '1'
+		},
+		'up': {
+			'axis': 'y',
+			'value': '-1'
+		},
+		'down': {
+			'axis': 'y',
+			'value': '1'
+		}
+	}
 
 	stage.addChild(this.sprite);
 }
 function CharacterMove(side) {
 	// delete current textures
 	this.sprite.textures = [];
+
 	
 	// add new ones
 	for (texture in this.textures[side]) {
 		this.sprite.textures.push(this.textures[side][texture]);
 	}
 
-	//move horizontal
-	if(side == 'right') {
-		this.behavior.changeX = 1;
-	} else if(side == 'left') {
-		this.behavior.changeX = -1;
-	} else {
-		this.behavior.changeX = 0;
+	this.behavior.change[this.config[side].axis] = this.config[side].value;
+
+	var collisions = checkCollision(this);
+
+	for(collision in collisions) {
+		if(collisions[collision].delta.x > 0 && side == 'right') {
+			this.behavior.change[this.config[side].axis] = 0;
+		}
+		if(collisions[collision].delta.x < 0 && side == 'left') {
+			this.behavior.change[this.config[side].axis] = 0;
+		}
+		if(collisions[collision].delta.y > 0 && side == 'down') {
+			this.behavior.change[this.config[side].axis] = 0;
+		}
+		if(collisions[collision].delta.y < 0 && side == 'up') {
+			this.behavior.change[this.config[side].axis] = 0;
+		}
 	}
 
-	//move vertical
-	if(side == 'down') {
-		this.behavior.changeY = 1;
-	} else if(side == 'up') {
-		this.behavior.changeY = -1;
-	} else {
-		this.behavior.changeY = 0;
-	}
 	
 	this.sprite.play();
 }
 function CharacterStop() {
 	this.sprite.stop();
-	this.behavior.changeX = 0;
-	this.behavior.changeY = 0;
+	this.behavior.change.x = 0;
+	this.behavior.change.y = 0;
 }
 function CharacterBehavior() {
 	return this.behavior;

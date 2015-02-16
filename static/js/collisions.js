@@ -1,15 +1,9 @@
 var B = SAT.Box;
 var V = SAT.Vector;
 
-var box1 = new B(new V(0,0), 20, 20).toPolygon();
-var box2 = new B(new V(-21,0), 20, 20).toPolygon();
-var collided = SAT.testPolygonPolygon(box1, box2);
-console.log(collided)
-
-
-
 function checkCollision(obj) {
 	var sprite = obj.sprite;
+	var collisions = [];
 	var temp_object = {
 		position: {
 			x: sprite.position.x,
@@ -20,6 +14,8 @@ function checkCollision(obj) {
 			width: sprite.texture.width
 		}
 	};
+
+	var hit_box = new B(new V(temp_object.position.x, temp_object.position.y), temp_object.size.width, temp_object.size.height).toPolygon();
 	
 	for(object in stage.children) {
 		if(stage.children[object].position != sprite.position && stage.children[object].texture != sprite.texture) {
@@ -39,23 +35,20 @@ function checkCollision(obj) {
 						width: temp_sprite.texture.width
 					}
 				}
-				if(collisionComparision(temp_object, temp_object_2)) {
-					return true;
-				} else {
+				var temp_hit_box = new B(new V(temp_object_2.position.x, temp_object_2.position.y), temp_object_2.size.width, temp_object_2.size.height).toPolygon();
+				var collided = SAT.testPolygonPolygon(hit_box, temp_hit_box);
+
+				if(collided) {
+					var temp_collision = {
+						delta: {
+							x: temp_distance.x,
+							y: temp_distance.y
+						}
+					}
+					collisions.push(temp_collision);
 				}
 			}
 		}
 	}
-	return false;
-}
-
-function collisionComparision(object_1, object_2) {
-	var collision = false;
-	if(object_1.position.x < object_2.position.x + object_2.size.width && object_1.position.x + object_1.size.width > object_2.position.x &&
-		object_1.position.y < object_2.position.y + object_2.size.height && object_1.position.y + object_1.size.height > object_2.position.y) {
-		collision = true;
-	}
-	return collision;
-}
-function collisionDirection() {
+	return collisions;
 }

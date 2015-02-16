@@ -37,8 +37,8 @@ function animate() {
 	requestAnimFrame(animate);
 
 	for(character in characters) {
-		characters[character].sprite.position.x += (characters[character].behavior.changeX * global.speed);
-		characters[character].sprite.position.y += (characters[character].behavior.changeY * global.speed);
+		characters[character].sprite.position.x += (characters[character].behavior.change.x * global.speed);
+		characters[character].sprite.position.y += (characters[character].behavior.change.y * global.speed);
 	}
 
 	// add to fix multiple keys pressed bug

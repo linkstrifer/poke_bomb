@@ -21,6 +21,7 @@ function keyDownHandler(event) {
 	for(player in moves) {
 		if(moves[player][event.keyCode]) {
 			setKey(player, event.keyCode);
+			characters[player].stop();
 			characters[player].move(moves[player][event.keyCode]);
 		}
 	}

@@ -1,4 +1,5 @@
 function checkCollisions(obj) {
+	var collided_objects = [];
 	var hit_box = {
 		x: obj.sprite.position.x,
 		y: obj.sprite.position.y,
@@ -6,7 +7,19 @@ function checkCollisions(obj) {
 		width: obj.sprite.texture.width
 	};
 
-	return false;
+	var temp_hit_box = {
+		x: blocks[0].position.x,
+		y: blocks[0].position.y,
+		height: blocks[0].texture.height,
+		width: blocks[0].texture.width
+	};
+
+	if(hit_box.x < temp_hit_box.x + temp_hit_box.width && hit_box.x + hit_box.width > temp_hit_box.x &&
+		hit_box.y < temp_hit_box.y + temp_hit_box.height && hit_box.y + hit_box.height > temp_hit_box.y) {
+		collided_objects.push(blocks[0]);
+	}
+	
+	return collided_objects;
 }
 
 /*

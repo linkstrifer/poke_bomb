@@ -1,5 +1,7 @@
 var stage;
+var kdtree;
 var characters = [];
+var blocks = [];
 var renderer;
 var assets_list;
 var loader;
@@ -40,17 +42,18 @@ loader.onComplete = function() {
 		block.anchor.y = 0.5;
 		
 		stage.addChild(block);
+		blocks.push(block);
 
-		hit_box = {
-			x: 0,
-			y: 0,
+		hit_box_shape = {
+			left: 0,
+			top: 0,
 			height: block.texture.height,
 			width: block.texture.width
 		};
 
 		var graphics = new PIXI.Graphics();
 		graphics.lineStyle(5, 0xFF0000);
-		graphics.drawRect(hit_box.x - (hit_box.width / 2), hit_box.y - (hit_box.height / 2), hit_box.width, hit_box.height);
+		graphics.drawRect(hit_box_shape.left - (hit_box_shape.width / 2), hit_box_shape.top - (hit_box_shape.height / 2), hit_box_shape.width, hit_box_shape.height);
 
 		block.addChild(graphics);
 
@@ -64,8 +67,8 @@ function animate() {
 	requestAnimFrame(animate);
 
 	for(character in characters) {
-		var collided = checkCollisions(characters[character]);
-		if(!collided) {
+		var collided_objects = checkCollisions(characters[character]);
+		if(collided_objects.length == 0) {
 			characters[character].sprite.position.x += (characters[character].behavior.change.x * global.speed);
 			characters[character].sprite.position.y += (characters[character].behavior.change.y * global.speed);
 		}

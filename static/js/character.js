@@ -28,8 +28,8 @@ function CharacterInit(name) {
 	this.textures = map(name);
 
 	this.sprite = new PIXI.MovieClip(this.textures.down);
-	this.sprite.position.x = 500 * Math.random();
-	this.sprite.position.y = 500 * Math.random();
+	this.sprite.position.x = 200;
+	this.sprite.position.y = 200;
 	this.sprite.anchor.x = 0.5;
 	this.sprite.anchor.y = 0.5;
 	this.sprite.animationSpeed = 0.07;

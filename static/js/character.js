@@ -62,6 +62,19 @@ function CharacterInit(name) {
 		}
 	}
 
+	hit_box = {
+		x: 0,
+		y: 0,
+		height: this.sprite.texture.height,
+		width: this.sprite.texture.width
+	};
+
+	var graphics = new PIXI.Graphics();
+	graphics.lineStyle(5, 0xFF0000);
+	graphics.drawRect(hit_box.x - (hit_box.width / 2), hit_box.y - (hit_box.height / 2), hit_box.width, hit_box.height);
+
+	this.sprite.addChild(graphics);
+
 	stage.addChild(this.sprite);
 }
 function CharacterMove(side) {
@@ -75,24 +88,6 @@ function CharacterMove(side) {
 	}
 
 	this.behavior.change[this.config[side].axis] = this.config[side].value;
-
-	var collisions = checkCollision(this);
-
-	for(collision in collisions) {
-		if(collisions[collision].delta.x > 0 && side == 'right') {
-			this.behavior.change[this.config[side].axis] = 0;
-		}
-		if(collisions[collision].delta.x < 0 && side == 'left') {
-			this.behavior.change[this.config[side].axis] = 0;
-		}
-		if(collisions[collision].delta.y > 0 && side == 'down') {
-			this.behavior.change[this.config[side].axis] = 0;
-		}
-		if(collisions[collision].delta.y < 0 && side == 'up') {
-			this.behavior.change[this.config[side].axis] = 0;
-		}
-	}
-
 	
 	this.sprite.play();
 }

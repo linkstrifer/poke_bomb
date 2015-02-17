@@ -1,3 +1,15 @@
+function checkCollisions(obj) {
+	var hit_box = {
+		x: obj.sprite.position.x,
+		y: obj.sprite.position.y,
+		height: obj.sprite.texture.height,
+		width: obj.sprite.texture.width
+	};
+
+	return false;
+}
+
+/*
 var B = SAT.Box;
 var V = SAT.Vector;
 
@@ -52,3 +64,4 @@ function checkCollision(obj) {
 	}
 	return collisions;
 }
+*/

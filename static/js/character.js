@@ -70,7 +70,7 @@ function CharacterInit(name) {
 	};
 
 	var graphics = new PIXI.Graphics();
-	graphics.lineStyle(5, 0xFF0000);
+	// graphics.lineStyle(5, 0xFF0000);
 	graphics.drawRect(hit_box.x - (hit_box.width / 2), hit_box.y - (hit_box.height / 2), hit_box.width, hit_box.height);
 
 	this.sprite.addChild(graphics);

@@ -52,7 +52,7 @@ loader.onComplete = function() {
 		};
 
 		var graphics = new PIXI.Graphics();
-		graphics.lineStyle(5, 0xFF0000);
+		// graphics.lineStyle(5, 0xFF0000);
 		graphics.drawRect(hit_box_shape.left - (hit_box_shape.width / 2), hit_box_shape.top - (hit_box_shape.height / 2), hit_box_shape.width, hit_box_shape.height);
 
 		block.addChild(graphics);
